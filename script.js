@@ -281,29 +281,43 @@ const checkHand = (pokerPlayer) => {
     pokerPlayer.handWorth = 0
   }
 }
-const reDealCards = (pokerPlayer, ...theArgs) => {
-  deckLength = deck.length
-  randDeckNum = Math.floor(Math.random() * deckLength)
-
+const reDealCards = (...theArgs) => {
   theArgs.forEach((cardIndex) => {
-    pokerPlayer.currentHand[cardIndex].remove
+    deckLength = deck.length
+    randDeckNum = Math.floor(Math.random() * deckLength)
+    userPlayer.currentHand[cardIndex].remove
+    userPlayer.currentHand.push(deck[randDeckNum])
+    discardDeck = deck.splice(randDeckNum, 1)
   })
-  pokerPlayer.currentHand.push(deck[randDeckNum])
-
-  discardDeck = deck.splice(randDeckNum, 1)
 }
 
-dealCards(userPlayer)
-dealCards(aiPlayer)
-checkHand(userPlayer)
-checkHand(aiPlayer)
-alert(userPlayer.handWorth)
-alert(aiPlayer.handWorth)
+let num
 
-userPlayer.currentHand.forEach((element) => {
-  let crdVal = document.createElement('p')
-  crdVal.innerText = element.value
-  let crdSut = document.createElement('p')
-  crdSut.innerText = element.suit
-  document.querySelector('body').append(crdSut, crdVal)
+// checkHand(userPlayer)
+// checkHand(aiPlayer)
+
+//DOM Manipulation
+
+// let button = document.querySelector('button')
+// button.addEventListener('click', function (event) {
+//   reDealCards(2)
+//   alert('redeal working')
+//   updateCards()
+// })
+let dealButton = document.querySelector('.deal')
+dealButton.addEventListener('click', () => {
+  dealCards(userPlayer)
+  dealCards(aiPlayer)
+  updateCards()
+  document.querySelector('.deal').remove()
 })
+
+const updateCards = () => {
+  userPlayer.currentHand.forEach((element) => {
+    let crdVal = document.createElement('p')
+    crdVal.innerText = element.value
+    let crdSut = document.createElement('p')
+    crdSut.innerText = element.suit
+    document.querySelector('.cardList').append(crdSut, crdVal)
+  })
+}

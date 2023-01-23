@@ -74,67 +74,69 @@ const cq = new card('clubs', 12)
 const ck = new card('clubs', 13)
 const ca = new card('clubs', 14)
 
-deck.push(
-  s2,
-  s3,
-  s4,
-  s5,
-  s6,
-  s7,
-  s8,
-  s9,
-  s10,
-  sj,
-  sq,
-  sk,
-  sa,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  h7,
-  h8,
-  h9,
-  h10,
-  hj,
-  hq,
-  hk,
-  ha,
-  d2,
-  d3,
-  d4,
-  d5,
-  d6,
-  d7,
-  d8,
-  d9,
-  d10,
-  dj,
-  dq,
-  dk,
-  da,
-  c2,
-  c3,
-  c4,
-  c5,
-  c6,
-  c7,
-  c8,
-  c9,
-  c10,
-  cj,
-  cq,
-  ck,
-  ca
-)
+const refreshDeck = () => {
+  deck = []
+  deck.push(
+    s2,
+    s3,
+    s4,
+    s5,
+    s6,
+    s7,
+    s8,
+    s9,
+    s10,
+    sj,
+    sq,
+    sk,
+    sa,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    h7,
+    h8,
+    h9,
+    h10,
+    hj,
+    hq,
+    hk,
+    ha,
+    d2,
+    d3,
+    d4,
+    d5,
+    d6,
+    d7,
+    d8,
+    d9,
+    d10,
+    dj,
+    dq,
+    dk,
+    da,
+    c2,
+    c3,
+    c4,
+    c5,
+    c6,
+    c7,
+    c8,
+    c9,
+    c10,
+    cj,
+    cq,
+    ck,
+    ca
+  )
+}
+refreshDeck()
 let deckLength = deck.length
 let randDeckNum = Math.floor(Math.random() * deckLength)
+
 //// Functions
 
-// userPlayer.currentHand.forEach((Element) => {
-//   alert(`You have the ${Element.value} of ${Element.suit}`)
-// })
 const dealCards = (pokerPlayer) => {
   for (i = 0; i < 5; i++) {
     deckLength = deck.length
@@ -169,6 +171,7 @@ const checkStraight = (pokerPlayer) => {
     return 0
   }
 }
+//check flush returns a lower float decimal because in a straight flush, high card matters more than suit
 const checkFlush = (pokerPlayer) => {
   if (
     pokerPlayer.currentHandSuits.includes(
@@ -180,8 +183,7 @@ const checkFlush = (pokerPlayer) => {
     )
   ) {
     return 7.001
-  }
-  if (
+  } else if (
     pokerPlayer.currentHandSuits.includes(
       'diamonds',
       'diamonds',
@@ -191,8 +193,7 @@ const checkFlush = (pokerPlayer) => {
     )
   ) {
     return 7.002
-  }
-  if (
+  } else if (
     pokerPlayer.currentHandSuits.includes(
       'hearts',
       'hearts',
@@ -200,20 +201,23 @@ const checkFlush = (pokerPlayer) => {
       'hearts',
       'hearts'
     )
-  )
+  ) {
     return 7.003
+  } else if (
+    pokerPlayer.currentHandSuits.includes(
+      'spades',
+      'spades',
+      'spades',
+      'spades',
+      'spades'
+    )
+  ) {
+    return 7.004
+  } else {
+    return 0
+  }
 }
-if (
-  pokerPlayer.currentHandSuits.includes(
-    'spades',
-    'spades',
-    'spades',
-    'spades',
-    'spades'
-  )
-) {
-  return 7.004
-}
+// const checkPairs = (pokerPlayer) => {}
 
 const checkHand = (pokerPlayer) => {
   //add values and suits
@@ -221,10 +225,30 @@ const checkHand = (pokerPlayer) => {
     pokerPlayer.currentHandValues.push(element.value)
     pokerPlayer.currentHandSuits.push(element.suit)
   })
-  //check straight
-  checkStraight(pokerPlayer)
+  if (checkStraight(pokerPlayer) != 0) {
+    pokerPlayer.handWorth = checkStraight(pokerPlayer)
+  } else if (checkFlush(pokerPlayer) != 0) {
+    pokerPlayer.handWorth = checkFlush(pokerPlayer)
+    if (checkStraight(pokerPlayer) != 0) {
+      alert('stfl work')
+    }
+  }
 }
+//   } else if (checkStraight(pokerPlayer) && checkFlush(pokerPlayer)) {
+//     alert('stfl work')
+//     pokerPlayer.handWorth += checkStraight(pokerPlayer)
+//     pokerPlayer.handWorth += checkFlush(pokerPlayer)
+//   }
+// }
 
 dealCards(userPlayer)
-dealCards(aiPlayer)
 checkHand(userPlayer)
+alert(userPlayer.handWorth)
+
+userPlayer.currentHand.forEach((element) => {
+  let crdVal = document.createElement('p')
+  crdVal.innerText = element.value
+  let crdSut = document.createElement('p')
+  crdSut.innerText = element.suit
+  document.querySelector('body').append(crdSut, crdVal)
+})

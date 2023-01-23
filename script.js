@@ -140,32 +140,51 @@ let randDeckNum = Math.floor(Math.random() * deckLength)
 const dealCards = (pokerPlayer) => {
   for (i = 0; i < 5; i++) {
     deckLength = deck.length
-    randNum = Math.floor(Math.random() * deckLength)
-    pokerPlayer.currentHand.push(deck[randDeckNum])
+    randDeckNum = Math.floor(Math.random() * deckLength)
+
+    // pokerPlayer.currentHand.push(deck[randDeckNum])
+    //remove this bottom function
+    pokerPlayer.currentHand.push(deck[i])
+
     discardDeck = deck.splice(randDeckNum, 1)
   }
 }
-
 const checkStraight = (pokerPlayer) => {
-  if (pokerPlayer.currentHandValues.includes(14, 2, 3, 4, 5)) {
+  let case1 = [2, 3, 4, 5, 14]
+  let case2 = [2, 3, 4, 5, 6]
+  let case3 = [3, 4, 5, 6, 7]
+  let case4 = [4, 5, 6, 7, 8]
+  let case5 = [5, 6, 7, 8, 9]
+  let case6 = [6, 7, 8, 9, 10]
+  let case7 = [7, 8, 9, 10, 11]
+  let case8 = [8, 9, 10, 11, 12]
+  let case9 = [9, 10, 11, 12, 13]
+  let case10 = [10, 11, 12, 13, 14]
+
+  pokerPlayer.currentHandValues.sort(function (a, b) {
+    return b - a
+  })
+  alert(pokerPlayer.currentHandValues)
+  if (pokerPlayer.currentHandValues.toString() === case1.toString()) {
     return 6.01
-  } else if (pokerPlayer.currentHandValues.includes(2, 3, 4, 5, 6)) {
+  } else if (pokerPlayer.currentHandValues.toString() === case2) {
+    alert('str work')
     return 6.02
-  } else if (pokerPlayer.currentHandValues.includes(3, 4, 5, 6, 7)) {
+  } else if (pokerPlayer.currentHandValues.toString() === case3.toString()) {
     return 6.03
-  } else if (pokerPlayer.currentHandValues.includes(4, 5, 6, 7, 8)) {
+  } else if (pokerPlayer.currentHandValues.toString() === case4.toString()) {
     return 6.04
-  } else if (pokerPlayer.currentHandValues.includes(5, 6, 7, 8, 9)) {
+  } else if (pokerPlayer.currentHandValues.toString() === case5.toString()) {
     return 6.05
-  } else if (pokerPlayer.currentHandValues.includes(6, 7, 8, 9, 10)) {
+  } else if (pokerPlayer.currentHandValues.toString() === case6.toString()) {
     return 6.06
-  } else if (pokerPlayer.currentHandValues.includes(7, 8, 9, 10, 11)) {
+  } else if (pokerPlayer.currentHandValues.toString() === case7.toString()) {
     return 6.07
-  } else if (pokerPlayer.currentHandValues.includes(8, 9, 10, 11, 12)) {
+  } else if (pokerPlayer.currentHandValues.toString() === case8.toString()) {
     return 6.08
-  } else if (pokerPlayer.currentHandValues.includes(9, 10, 11, 12, 13)) {
+  } else if (pokerPlayer.currentHandValues.toString() === case9.toString()) {
     return 6.09
-  } else if (pokerPlayer.currentHandValues.includes(10, 11, 12, 13, 14)) {
+  } else if (pokerPlayer.currentHandValues.toString() === case10.toString()) {
     return 6.1
   } else {
     return 0
@@ -173,45 +192,19 @@ const checkStraight = (pokerPlayer) => {
 }
 //check flush returns a lower float decimal because in a straight flush, high card matters more than suit
 const checkFlush = (pokerPlayer) => {
-  if (
-    pokerPlayer.currentHandSuits.includes(
-      'clubs',
-      'clubs',
-      'clubs',
-      'clubs',
-      'clubs'
-    )
-  ) {
+  let suitCase1 = ['clubs', 'clubs', 'clubs', 'clubs', 'clubs']
+  let suitCase2 = ['diamonds', 'diamonds', 'diamonds', 'diamonds', 'diamonds']
+  let suitCase3 = ['hearts', 'hearts', 'hearts', 'hearts', 'hearts']
+  let suitCase4 = ['spades', 'spades', 'spades', 'spades', 'spades']
+  alert(pokerPlayer.currentHandSuits)
+
+  if (pokerPlayer.currentHandSuits.toString() === suitCase1.toString()) {
     return 7.001
-  } else if (
-    pokerPlayer.currentHandSuits.includes(
-      'diamonds',
-      'diamonds',
-      'diamonds',
-      'diamonds',
-      'diamonds'
-    )
-  ) {
+  } else if (pokerPlayer.currentHandSuits.toString() === suitCase2.toString()) {
     return 7.002
-  } else if (
-    pokerPlayer.currentHandSuits.includes(
-      'hearts',
-      'hearts',
-      'hearts',
-      'hearts',
-      'hearts'
-    )
-  ) {
+  } else if (pokerPlayer.currentHandSuits.toString() === suitCase3.toString()) {
     return 7.003
-  } else if (
-    pokerPlayer.currentHandSuits.includes(
-      'spades',
-      'spades',
-      'spades',
-      'spades',
-      'spades'
-    )
-  ) {
+  } else if (pokerPlayer.currentHandSuits.toString() === suitCase4.toString()) {
     return 7.004
   } else {
     return 0
@@ -221,25 +214,22 @@ const checkFlush = (pokerPlayer) => {
 
 const checkHand = (pokerPlayer) => {
   //add values and suits
+
   pokerPlayer.currentHand.forEach((element) => {
     pokerPlayer.currentHandValues.push(element.value)
     pokerPlayer.currentHandSuits.push(element.suit)
   })
-  if (checkStraight(pokerPlayer) != 0) {
-    pokerPlayer.handWorth = checkStraight(pokerPlayer)
-  } else if (checkFlush(pokerPlayer) != 0) {
-    pokerPlayer.handWorth = checkFlush(pokerPlayer)
-    if (checkStraight(pokerPlayer) != 0) {
-      alert('stfl work')
-    }
-  }
+
+  // if (checkStraight(pokerPlayer) != 0) {
+  //   pokerPlayer.handWorth = checkStraight(pokerPlayer)
+  // } else if (checkFlush(pokerPlayer) != 0) {
+  //   pokerPlayer.handWorth = checkFlush(pokerPlayer)
+  //   if (checkStraight(pokerPlayer) != 0) {
+  //     alert('stfl work')
+  //   }
+  // }
+  checkStraight(pokerPlayer)
 }
-//   } else if (checkStraight(pokerPlayer) && checkFlush(pokerPlayer)) {
-//     alert('stfl work')
-//     pokerPlayer.handWorth += checkStraight(pokerPlayer)
-//     pokerPlayer.handWorth += checkFlush(pokerPlayer)
-//   }
-// }
 
 dealCards(userPlayer)
 checkHand(userPlayer)

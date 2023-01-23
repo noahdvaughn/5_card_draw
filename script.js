@@ -143,11 +143,17 @@ const dealCards = (pokerPlayer) => {
     randDeckNum = Math.floor(Math.random() * deckLength)
 
     // pokerPlayer.currentHand.push(deck[randDeckNum])
-    //remove this bottom function
-    pokerPlayer.currentHand.push(deck[i])
+
+    //bring this top function back
 
     discardDeck = deck.splice(randDeckNum, 1)
   }
+  //remove this hard code
+  pokerPlayer.currentHand.push(deck[0])
+  pokerPlayer.currentHand.push(deck[1])
+  pokerPlayer.currentHand.push(deck[2])
+  pokerPlayer.currentHand.push(deck[3])
+  pokerPlayer.currentHand.push(deck[4])
 }
 const checkStraight = (pokerPlayer) => {
   let case1 = [2, 3, 4, 5, 14]
@@ -161,14 +167,11 @@ const checkStraight = (pokerPlayer) => {
   let case9 = [9, 10, 11, 12, 13]
   let case10 = [10, 11, 12, 13, 14]
 
-  pokerPlayer.currentHandValues.sort(function (a, b) {
-    return b - a
-  })
-  alert(pokerPlayer.currentHandValues)
+  pokerPlayer.currentHandValues.sort()
+
   if (pokerPlayer.currentHandValues.toString() === case1.toString()) {
     return 6.01
-  } else if (pokerPlayer.currentHandValues.toString() === case2) {
-    alert('str work')
+  } else if (pokerPlayer.currentHandValues.toString() === case2.toString()) {
     return 6.02
   } else if (pokerPlayer.currentHandValues.toString() === case3.toString()) {
     return 6.03
@@ -190,6 +193,10 @@ const checkStraight = (pokerPlayer) => {
     return 0
   }
 }
+const checkPairs = (pokerPlayer) => {
+  pokerPlayer.currentHandValues.sort()
+}
+
 //check flush returns a lower float decimal because in a straight flush, high card matters more than suit
 const checkFlush = (pokerPlayer) => {
   let suitCase1 = ['clubs', 'clubs', 'clubs', 'clubs', 'clubs']
@@ -210,26 +217,27 @@ const checkFlush = (pokerPlayer) => {
     return 0
   }
 }
-// const checkPairs = (pokerPlayer) => {}
 
 const checkHand = (pokerPlayer) => {
   //add values and suits
-
   pokerPlayer.currentHand.forEach((element) => {
     pokerPlayer.currentHandValues.push(element.value)
     pokerPlayer.currentHandSuits.push(element.suit)
   })
 
-  // if (checkStraight(pokerPlayer) != 0) {
-  //   pokerPlayer.handWorth = checkStraight(pokerPlayer)
-  // } else if (checkFlush(pokerPlayer) != 0) {
-  //   pokerPlayer.handWorth = checkFlush(pokerPlayer)
-  //   if (checkStraight(pokerPlayer) != 0) {
-  //     alert('stfl work')
-  //   }
-  // }
-  checkStraight(pokerPlayer)
+  if (checkStraight(pokerPlayer) != 0 && checkFlush != 0) {
+    alert('working')
+    pokerPlayer.handWorth = checkStraight(pokerPlayer) + checkFlush(pokerPlayer)
+  }
 }
+
+//   else if (checkFlush(pokerPlayer) != 0) {
+//     pokerPlayer.handWorth = checkFlush(pokerPlayer)
+//     if (checkStraight(pokerPlayer) != 0) {
+//       alert('stfl work')
+//     }
+//   }
+// }
 
 dealCards(userPlayer)
 checkHand(userPlayer)

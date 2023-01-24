@@ -381,6 +381,7 @@ const updateCards = () => {
     let displayCardImage = document.createElement('img')
     displayCardImage.src = 'images/Playing_Cards/' + element.imagePath
     cardList.append(displayCardImage)
+    displayCardImage.classList.toggle('selectableCard')
     let aiDisplayCardImage = document.createElement('img')
     aiDisplayCardImage.src = 'images/Playing_Cards/card-back2.png'
     aiCardList.append(aiDisplayCardImage)

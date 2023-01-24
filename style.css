@@ -21,7 +21,7 @@ body{
   height: 100px;
   transition: all 0.2s;
 }
-.homeButton{
+#navItem{
   opacity: 1;
  color: white;
  float: left;
@@ -29,6 +29,7 @@ body{
 }
 .navImg{
   width: 30px;
+  margin-right: 20px;
 }
 .aiBar{
   grid-column: 1/4;
@@ -56,6 +57,9 @@ body{
   grid-row: 4/5;
   gap: 10px;
 
+}
+.selectableCard:hover{
+  border: 2px solid red;
 }
 .buttons{
   grid-column: 1/4;

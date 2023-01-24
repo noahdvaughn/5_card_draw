@@ -399,6 +399,9 @@ const resetGame = () => {
   while (cardList.firstChild) {
     cardList.removeChild(cardList.firstChild)
   }
+  while (aiCardList.firstChild) {
+    aiCardList.removeChild(aiCardList.firstChild)
+  }
   cardList.append(dealButton)
   cardList.append(redealButton)
 }
@@ -457,6 +460,7 @@ c4Button.addEventListener('click', () => {
     c4Counter++
   }
 })
+
 c5Button.addEventListener('click', () => {
   if (c5Counter % 2 === 0) {
     redealArray.push('4')
@@ -466,12 +470,15 @@ c5Button.addEventListener('click', () => {
     c5Counter++
   }
 })
+
 dealButton.addEventListener('click', () => {
   dealCards(userPlayer)
   dealCards(aiPlayer)
   updateCards()
-  document.querySelector('.deal').remove()
+  document.querySelector('.deal').classList.toggle('invisible')
+  redealButton.classList.toggle('invisible')
 })
+
 redealButton.addEventListener('click', () => {
   reDealCards(...redealArray)
   while (cardList.firstChild) {
@@ -481,9 +488,15 @@ redealButton.addEventListener('click', () => {
   while (aiCardList.firstChild) {
     aiCardList.removeChild(aiCardList.firstChild)
   }
-  redealButton.remove()
+  aiPlayer.currentHand.forEach((element) => {
+    let displayCardImage = document.createElement('img')
+    displayCardImage.src = 'images/Playing_Cards/' + element.imagePath
+    aiCardList.append(displayCardImage)
+  })
+  redealButton.classList.toggle('invisible')
   compareHandWorth(userPlayer, aiPlayer)
 })
+
 resetButton.addEventListener('click', () => {
   resetGame()
 })

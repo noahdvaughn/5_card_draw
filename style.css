@@ -1,27 +1,51 @@
 body{
-  background-color: beige;
+  background-image: url('https://www.publicdomainpictures.net/pictures/200000/velka/green-background-1480062887P1D.jpg');
   display: grid;
-  grid-template-rows: 150px 200px 150px 20px;
-  grid-template-columns: 20px 1fr 20px;
+  grid-template-rows: 100px 180px 200px 180px 10px;
+  grid-template-columns: 20px 1fr 40px;
   text-align: center;
+  background-repeat: no-repeat;
 }
-.aiBar{
+.navBar{
   grid-row: 1/2;
   grid-column: 1/4;
+  background-color: rgb(0, 0, 0);
+  margin:-10px -10px 0px -10px;
 }
-.middleArea{
+.homeButton{
+  opacity: 1;
+ color: white;
+ float: left;
+}
+.aiBar{
   grid-column: 1/4;
   grid-row: 2/3;
-  /* background-image: url('/images/Playing_Cards/card-back2.png'); */
+  display: flex;
+  align-items: center;
 
+  justify-content: center;
+  gap: 10px;
+}
+.middleArea{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/4;
+  grid-row: 3/4;
+ 
 }
 .userBar{
-  grid-column: 1/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  height: 20px;
-  grid-row: 3/4;
+  grid-column: 1/4;
+  grid-row: 4/5;
+  gap: 10px;
+
 }
 .buttons{
   grid-column: 1/4;
-  grid-row: 4/5;
+  grid-row: 5/6;
 }
+.invisible{display: none;}

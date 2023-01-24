@@ -48,9 +48,6 @@ body{
   grid-column: 1/4;
   grid-row: 3/4;
 }
-.middleCard{
-  position: absolute;
-}
 .deal{
   display: flex;
   align-items: center;
@@ -63,6 +60,7 @@ body{
   background-image: url("/images/Playing_Cards/card-back2.png");
   background-size: contain;
   text-shadow: 0px 0px 20px black;
+  
 }
 .userBar{
   display: flex;

@@ -201,7 +201,6 @@ const checkStraight = (pokerPlayer) => {
 }
 const checkPairs = (pokerPlayer) => {
   let pairNum = 0
-  let gapNum = 0
   pokerPlayer.currentHandValues.sort((a, b) => a - b)
   for (i = 0; i < 4; i++) {
     let nextNum = i + 1
@@ -403,7 +402,7 @@ const resetGame = () => {
   while (aiCardList.firstChild) {
     aiCardList.removeChild(aiCardList.firstChild)
   }
-  cardList.append(dealButton)
+  dealButton.classList.toggle('invisible')
   cardList.append(redealButton)
 }
 
@@ -418,64 +417,75 @@ let cardList = document.querySelector('.userBar')
 let aiCardList = document.querySelector('.aiBar')
 let dealButton = document.querySelector('.deal')
 let redealButton = document.querySelector('.redeal')
-let c1Button = document.querySelector('.card1out')
-let c2Button = document.querySelector('.card2out')
-let c3Button = document.querySelector('.card3out')
-let c4Button = document.querySelector('.card4out')
-let c5Button = document.querySelector('.card5out')
 let resetButton = document.querySelector('.reset')
 
-c1Button.addEventListener('click', () => {
-  if (c1Counter % 2 === 0) {
-    redealArray.push('0')
-    c1Counter++
-  } else if (c1Counter % 2 != 0) {
-    redealArray.pop()
-    c1Counter++
-  }
-})
-c2Button.addEventListener('click', () => {
-  if (c2Counter % 2 === 0) {
-    redealArray.push('1')
-    c2Counter++
-  } else if (c2Counter % 2 != 0) {
-    redealArray.pop()
-    c2Counter++
-  }
-})
-c3Button.addEventListener('click', () => {
-  if (c3Counter % 2 === 0) {
-    redealArray.push('2')
-    c3Counter++
-  } else if (c3Counter % 2 != 0) {
-    redealArray.pop()
-    c3Counter++
-  }
-})
-c4Button.addEventListener('click', () => {
-  if (c4Counter % 2 === 0) {
-    redealArray.push('3')
-    c4Counter++
-  } else if (c4Counter % 2 != 0) {
-    redealArray.pop()
-    c4Counter++
-  }
-})
+const addCardListeners = () => {
+  let selectableCard = document.querySelectorAll('.selectableCard')
 
-c5Button.addEventListener('click', () => {
-  if (c5Counter % 2 === 0) {
-    redealArray.push('4')
-    c5Counter++
-  } else if (c5Counter % 2 != 0) {
-    redealArray.pop()
-    c5Counter++
-  }
-})
+  selectableCard[0].addEventListener('click', () => {
+    if (c1Counter % 2 === 0) {
+      redealArray.push(`0`)
+      c1Counter++
+    } else if (c1Counter % 2 != 0) {
+      redealArray.pop()
+      c1Counter++
+    }
+    selectableCard[0].classList.toggle('selected')
+  })
+
+  selectableCard[1].addEventListener('click', () => {
+    if (c2Counter % 2 === 0) {
+      redealArray.push(`1`)
+      c2Counter++
+    } else if (c2Counter % 2 != 0) {
+      redealArray.pop()
+      c2Counter++
+    }
+    selectableCard[1].classList.toggle('selected')
+  })
+
+  selectableCard[2].addEventListener('click', () => {
+    if (c3Counter % 2 === 0) {
+      redealArray.push(`2`)
+      console.log(redealArray)
+      c3Counter++
+    } else if (c3Counter % 2 != 0) {
+      redealArray.pop()
+      c3Counter++
+    }
+    selectableCard[2].classList.toggle('selected')
+  })
+  selectableCard[3].addEventListener('click', () => {
+    if (c4Counter % 2 === 0) {
+      redealArray.push(`3`)
+      console.log(redealArray)
+      c4Counter++
+    } else if (c4Counter % 2 != 0) {
+      redealArray.pop()
+      c4Counter++
+    }
+    selectableCard[3].classList.toggle('selected')
+  })
+
+  selectableCard[4].addEventListener('click', () => {
+    if (c5Counter % 2 === 0) {
+      redealArray.push(`4`)
+      console.log(redealArray)
+      c5Counter++
+    } else if (c5Counter % 2 != 0) {
+      redealArray.pop()
+      c5Counter++
+    }
+    selectableCard[4].classList.toggle('selected')
+  })
+}
 
 dealButton.addEventListener('click', () => {
   dealCards(userPlayer)
   dealCards(aiPlayer)
   updateCards()
+  addCardListeners()
+
   document.querySelector('.deal').classList.toggle('invisible')
   redealButton.classList.toggle('invisible')
 })
@@ -489,6 +499,7 @@ redealButton.addEventListener('click', () => {
   while (aiCardList.firstChild) {
     aiCardList.removeChild(aiCardList.firstChild)
   }
+  //shows ais dealt cards
   aiPlayer.currentHand.forEach((element) => {
     let displayCardImage = document.createElement('img')
     displayCardImage.src = 'images/Playing_Cards/' + element.imagePath

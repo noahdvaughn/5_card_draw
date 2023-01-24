@@ -61,6 +61,10 @@ body{
 .selectableCard:hover{
   border: 2px solid red;
 }
+.selected{
+  border: 2px solid red;
+
+}
 .buttons{
   grid-column: 1/4;
   grid-row: 5/6;

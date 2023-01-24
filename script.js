@@ -15,9 +15,10 @@ class pokerPlayer {
   }
 }
 class card {
-  constructor(suit, value) {
+  constructor(suit, value, imagePath) {
     this.suit = suit
     this.value = value
+    this.imagePath = imagePath
   }
 }
 const userPlayer = new pokerPlayer()
@@ -25,61 +26,61 @@ const aiPlayer = new pokerPlayer()
 let deck = []
 let discardDeck = []
 
-const s2 = new card('spades', 2)
-const s3 = new card('spades', 3)
-const s4 = new card('spades', 4)
-const s5 = new card('spades', 5)
-const s6 = new card('spades', 6)
-const s7 = new card('spades', 7)
-const s8 = new card('spades', 8)
-const s9 = new card('spades', 9)
-const s10 = new card('spades', 10)
-const sj = new card('spades', 11)
-const sq = new card('spades', 12)
-const sk = new card('spades', 13)
-const sa = new card('spades', 14)
+const s2 = new card('spades', 2, 'card-spades-2.png')
+const s3 = new card('spades', 3, 'card-spades-3.png')
+const s4 = new card('spades', 4, 'card-spades-4.png')
+const s5 = new card('spades', 5, 'card-spades-5.png')
+const s6 = new card('spades', 6, 'card-spades-6.png')
+const s7 = new card('spades', 7, 'card-spades-7.png')
+const s8 = new card('spades', 8, 'card-spades-8.png')
+const s9 = new card('spades', 9, 'card-spades-9.png')
+const s10 = new card('spades', 10, 'card-spades-10.png')
+const sj = new card('spades', 11, 'card-spades-11.png')
+const sq = new card('spades', 12, 'card-spades-12.png')
+const sk = new card('spades', 13, 'card-spades-13.png')
+const sa = new card('spades', 14, 'card-spades-1.png')
 
-const h2 = new card('hearts', 2)
-const h3 = new card('hearts', 3)
-const h4 = new card('hearts', 4)
-const h5 = new card('hearts', 5)
-const h6 = new card('hearts', 6)
-const h7 = new card('hearts', 7)
-const h8 = new card('hearts', 8)
-const h9 = new card('hearts', 9)
-const h10 = new card('hearts', 10)
-const hj = new card('hearts', 11)
-const hq = new card('hearts', 12)
-const hk = new card('hearts', 13)
-const ha = new card('hearts', 14)
+const h2 = new card('hearts', 2, 'card-hearts-2.png')
+const h3 = new card('hearts', 3, 'card-hearts-3.png')
+const h4 = new card('hearts', 4, 'card-hearts-4.png')
+const h5 = new card('hearts', 5, 'card-hearts-5.png')
+const h6 = new card('hearts', 6, 'card-hearts-6.png')
+const h7 = new card('hearts', 7, 'card-hearts-7.png')
+const h8 = new card('hearts', 8, 'card-hearts-8.png')
+const h9 = new card('hearts', 9, 'card-hearts-9.png')
+const h10 = new card('hearts', 10, 'card-hearts-10.png')
+const hj = new card('hearts', 11, 'card-hearts-11.png')
+const hq = new card('hearts', 12, 'card-hearts-12.png')
+const hk = new card('hearts', 13, 'card-hearts-13.png')
+const ha = new card('hearts', 14, 'card-hearts-1.png')
 
-const d2 = new card('diamonds', 2)
-const d3 = new card('diamonds', 3)
-const d4 = new card('diamonds', 4)
-const d5 = new card('diamonds', 5)
-const d6 = new card('diamonds', 6)
-const d7 = new card('diamonds', 7)
-const d8 = new card('diamonds', 8)
-const d9 = new card('diamonds', 9)
-const d10 = new card('diamonds', 10)
-const dj = new card('diamonds', 11)
-const dq = new card('diamonds', 12)
-const dk = new card('diamonds', 13)
-const da = new card('diamonds', 14)
+const d2 = new card('diamonds', 2, 'card-diamonds-2.png')
+const d3 = new card('diamonds', 3, 'card-diamonds-3.png')
+const d4 = new card('diamonds', 4, 'card-diamonds-4.png')
+const d5 = new card('diamonds', 5, 'card-diamonds-5.png')
+const d6 = new card('diamonds', 6, 'card-diamonds-6.png')
+const d7 = new card('diamonds', 7, 'card-diamonds-7.png')
+const d8 = new card('diamonds', 8, 'card-diamonds-8.png')
+const d9 = new card('diamonds', 9, 'card-diamonds-9.png')
+const d10 = new card('diamonds', 10, 'card-diamonds-10.png')
+const dj = new card('diamonds', 11, 'card-diamonds-11.png')
+const dq = new card('diamonds', 12, 'card-diamonds-12.png')
+const dk = new card('diamonds', 13, 'card-diamonds-13.png')
+const da = new card('diamonds', 14, 'card-diamonds-1.png')
 
-const c2 = new card('clubs', 2)
-const c3 = new card('clubs', 3)
-const c4 = new card('clubs', 4)
-const c5 = new card('clubs', 5)
-const c6 = new card('clubs', 6)
-const c7 = new card('clubs', 7)
-const c8 = new card('clubs', 8)
-const c9 = new card('clubs', 9)
-const c10 = new card('clubs', 10)
-const cj = new card('clubs', 11)
-const cq = new card('clubs', 12)
-const ck = new card('clubs', 13)
-const ca = new card('clubs', 14)
+const c2 = new card('clubs', 2, 'card-clubs-2.png')
+const c3 = new card('clubs', 3, 'card-clubs-3.png')
+const c4 = new card('clubs', 4, 'card-clubs-4.png')
+const c5 = new card('clubs', 5, 'card-clubs-5.png')
+const c6 = new card('clubs', 6, 'card-clubs-6.png')
+const c7 = new card('clubs', 7, 'card-clubs-7.png')
+const c8 = new card('clubs', 8, 'card-clubs-8.png')
+const c9 = new card('clubs', 9, 'card-clubs-9.png')
+const c10 = new card('clubs', 10, 'card-clubs-10.png')
+const cj = new card('clubs', 11, 'card-clubs-11.png')
+const cq = new card('clubs', 12, 'card-clubs-12.png')
+const ck = new card('clubs', 13, 'card-clubs-13.png')
+const ca = new card('clubs', 14, 'card-clubs-1.png')
 
 //// Functions
 
@@ -148,17 +149,9 @@ const dealCards = (pokerPlayer) => {
   for (i = 0; i < 5; i++) {
     deckLength = deck.length
     randDeckNum = Math.floor(Math.random() * deckLength)
-
     pokerPlayer.currentHand.push(deck[randDeckNum])
-
     discardDeck = deck.splice(randDeckNum, 1)
   }
-  //remove this hard code
-  // pokerPlayer.currentHand.push(deck[0])
-  // pokerPlayer.currentHand.push(deck[13])
-  // pokerPlayer.currentHand.push(deck[26])
-  // pokerPlayer.currentHand.push(deck[3])
-  // pokerPlayer.currentHand.push(deck[4])
 }
 const checkStraight = (pokerPlayer) => {
   let case1 = [2, 3, 4, 5, 14]
@@ -276,7 +269,6 @@ const checkFlush = (pokerPlayer) => {
 const checkHighCard = (pokerPlayer) => {
   pokerPlayer.currentHandValues.sort((a, b) => a - b)
   let highCard = pokerPlayer.currentHandValues[4].toString()
-  alert(highCard)
 
   //cases end at 6 because if you have 5 high you have a straight or a pair
   switch (highCard) {
@@ -373,11 +365,9 @@ const reDealCards = (...arguments) => {
 
 const updateCards = () => {
   userPlayer.currentHand.forEach((element) => {
-    let crdVal = document.createElement('p')
-    crdVal.innerText = element
-    let crdSut = document.createElement('p')
-    crdSut.innerText = element.suit
-    cardList.append(crdSut, crdVal)
+    let displayCardImage = document.createElement('img')
+    displayCardImage.src = 'images/Playing_Cards/' + element.imagePath
+    cardList.append(displayCardImage)
   })
 }
 const compareHandWorth = (userPlayer, aiPlayer) => {
@@ -486,4 +476,7 @@ redealButton.addEventListener('click', () => {
   updateCards()
   redealButton.remove()
   compareHandWorth(userPlayer, aiPlayer)
+})
+resetButton.addEventListener('click', () => {
+  resetGame()
 })

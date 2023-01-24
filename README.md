@@ -35,3 +35,5 @@ Week 1 General Assembly project. A poker game of 5-card draw built on JavaScript
 - [ ] AI update
 
 ### **_Credits_**
+
+- [Free to use card assets from image creator, cazwolf](https://cazwolf.itch.io/pixel-fantasy-cards)

@@ -4,6 +4,14 @@ class pokerPlayer {
     this.currentHandValues = []
     this.currentHandSuits = []
     this.handWorth = 0
+    this.handTitle = ''
+  }
+  resetPlayer() {
+    this.currentHand = []
+    this.currentHandValues = []
+    this.currentHandSuits = []
+    this.handWorth = 0
+    this.handTitle = ''
   }
 }
 class card {
@@ -298,26 +306,106 @@ const updateCards = () => {
     cardList.append(crdSut, crdVal)
   })
 }
+const compareHandWorth = (userPlayer, aiPlayer) => {
+  checkHand(userPlayer)
+  checkHand(aiPlayer)
 
-// checkHand(userPlayer)
-// checkHand(aiPlayer)
-
-//DOM Manipulation
-let cardList = document.querySelector('.cardList')
-let dealButton = document.querySelector('.deal')
-let button = document.querySelector('.redeal')
-let c1button = document.querySelector('.card1out')
-
-button.addEventListener('click', function (event) {
-  reDealCards(redealArray)
+  if (userPlayer.handWorth > aiPlayer.handWorth) {
+    alert('You win!')
+  } else if (aiPlayer.handWorth > userPlayer.handWorth) {
+    alert('You lose!')
+  } else if (aiPlayer.handWorth === userPlayer.handWorth) {
+    alert('It`s a draw!')
+  }
+}
+const resetGame = () => {
+  refreshDeck()
+  userPlayer.resetPlayer()
+  aiPlayer.resetPlayer()
+  redealArray = []
+  c1Counter = 0
+  c2Counter = 0
+  c3Counter = 0
+  c4Counter = 0
+  c5Counter = 0
   while (cardList.firstChild) {
     cardList.removeChild(cardList.firstChild)
   }
-  updateCards()
+}
+
+//DOM Manipulation
+let redealArray = []
+let c1Counter = 0
+let c2Counter = 0
+let c3Counter = 0
+let c4Counter = 0
+let c5Counter = 0
+let cardList = document.querySelector('.cardList')
+let dealButton = document.querySelector('.deal')
+let redealButton = document.querySelector('.redeal')
+let c1Button = document.querySelector('.card1out')
+let c2Button = document.querySelector('.card2out')
+let c3Button = document.querySelector('.card3out')
+let c4Button = document.querySelector('.card4out')
+let c5Button = document.querySelector('.card5out')
+
+c1Button.addEventListener('click', () => {
+  if (c1Counter % 2 === 0) {
+    redealArray.push('0')
+    c1Counter++
+  } else if (c1Counter % 2 != 0) {
+    redealArray.pop()
+    c1Counter++
+  }
+})
+c2Button.addEventListener('click', () => {
+  if (c2Counter % 2 === 0) {
+    redealArray.push('1')
+    c2Counter++
+  } else if (c2Counter % 2 != 0) {
+    redealArray.pop()
+    c2Counter++
+  }
+})
+c3Button.addEventListener('click', () => {
+  if (c3Counter % 2 === 0) {
+    redealArray.push('2')
+    c3Counter++
+  } else if (c3Counter % 2 != 0) {
+    redealArray.pop()
+    c3Counter++
+  }
+})
+c4Button.addEventListener('click', () => {
+  if (c4Counter % 2 === 0) {
+    redealArray.push('3')
+    c4Counter++
+  } else if (c4Counter % 2 != 0) {
+    redealArray.pop()
+    c4Counter++
+  }
+})
+c5Button.addEventListener('click', () => {
+  if (c5Counter % 2 === 0) {
+    redealArray.push('4')
+    c5Counter++
+  } else if (c5Counter % 2 != 0) {
+    redealArray.pop()
+    c5Counter++
+  }
 })
 dealButton.addEventListener('click', () => {
   dealCards(userPlayer)
   dealCards(aiPlayer)
   updateCards()
   document.querySelector('.deal').remove()
+})
+redealButton.addEventListener('click', () => {
+  reDealCards(...redealArray)
+  while (cardList.firstChild) {
+    cardList.removeChild(cardList.firstChild)
+  }
+  updateCards()
+  document.querySelector('.redeal').remove()
+  compareHandWorth(userPlayer, aiPlayer)
 })

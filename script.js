@@ -14,7 +14,6 @@ class card {
 }
 const userPlayer = new pokerPlayer()
 const aiPlayer = new pokerPlayer()
-
 let deck = []
 let discardDeck = []
 
@@ -281,36 +280,14 @@ const checkHand = (pokerPlayer) => {
     pokerPlayer.handWorth = 0
   }
 }
-const reDealCards = (...theArgs) => {
-  theArgs.forEach((cardIndex) => {
+const reDealCards = (...arguments) => {
+  arguments.forEach((cardIndex) => {
     deckLength = deck.length
     randDeckNum = Math.floor(Math.random() * deckLength)
-    userPlayer.currentHand[cardIndex].remove
-    userPlayer.currentHand.push(deck[randDeckNum])
+    userPlayer.currentHand[cardIndex] = deck[randDeckNum]
     discardDeck = deck.splice(randDeckNum, 1)
   })
 }
-
-let num
-
-// checkHand(userPlayer)
-// checkHand(aiPlayer)
-
-//DOM Manipulation
-
-// let button = document.querySelector('button')
-// button.addEventListener('click', function (event) {
-//   reDealCards(2)
-//   alert('redeal working')
-//   updateCards()
-// })
-let dealButton = document.querySelector('.deal')
-dealButton.addEventListener('click', () => {
-  dealCards(userPlayer)
-  dealCards(aiPlayer)
-  updateCards()
-  document.querySelector('.deal').remove()
-})
 
 const updateCards = () => {
   userPlayer.currentHand.forEach((element) => {
@@ -318,6 +295,29 @@ const updateCards = () => {
     crdVal.innerText = element.value
     let crdSut = document.createElement('p')
     crdSut.innerText = element.suit
-    document.querySelector('.cardList').append(crdSut, crdVal)
+    cardList.append(crdSut, crdVal)
   })
 }
+
+// checkHand(userPlayer)
+// checkHand(aiPlayer)
+
+//DOM Manipulation
+let cardList = document.querySelector('.cardList')
+let dealButton = document.querySelector('.deal')
+let button = document.querySelector('.redeal')
+let c1button = document.querySelector('.card1out')
+
+button.addEventListener('click', function (event) {
+  reDealCards(redealArray)
+  while (cardList.firstChild) {
+    cardList.removeChild(cardList.firstChild)
+  }
+  updateCards()
+})
+dealButton.addEventListener('click', () => {
+  dealCards(userPlayer)
+  dealCards(aiPlayer)
+  updateCards()
+  document.querySelector('.deal').remove()
+})

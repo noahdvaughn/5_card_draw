@@ -363,13 +363,6 @@ const reDealCards = (...arguments) => {
   })
 }
 
-const updateCards = () => {
-  userPlayer.currentHand.forEach((element) => {
-    let displayCardImage = document.createElement('img')
-    displayCardImage.src = 'images/Playing_Cards/' + element.imagePath
-    cardList.append(displayCardImage)
-  })
-}
 const compareHandWorth = (userPlayer, aiPlayer) => {
   checkHand(userPlayer)
   checkHand(aiPlayer)
@@ -382,6 +375,16 @@ const compareHandWorth = (userPlayer, aiPlayer) => {
     alert('It`s a draw!')
   }
   alert(`You had ${userPlayer.handTitle} and they had ${aiPlayer.handTitle}`)
+}
+const updateCards = () => {
+  userPlayer.currentHand.forEach((element) => {
+    let displayCardImage = document.createElement('img')
+    displayCardImage.src = 'images/Playing_Cards/' + element.imagePath
+    cardList.append(displayCardImage)
+    let aiDisplayCardImage = document.createElement('img')
+    aiDisplayCardImage.src = 'images/Playing_Cards/card-back2.png'
+    aiCardList.append(aiDisplayCardImage)
+  })
 }
 const resetGame = () => {
   refreshDeck()
@@ -407,7 +410,8 @@ let c2Counter = 0
 let c3Counter = 0
 let c4Counter = 0
 let c5Counter = 0
-let cardList = document.querySelector('.cardList')
+let cardList = document.querySelector('.userBar')
+let aiCardList = document.querySelector('.aiBar')
 let dealButton = document.querySelector('.deal')
 let redealButton = document.querySelector('.redeal')
 let c1Button = document.querySelector('.card1out')
@@ -474,6 +478,9 @@ redealButton.addEventListener('click', () => {
     cardList.removeChild(cardList.firstChild)
   }
   updateCards()
+  while (aiCardList.firstChild) {
+    aiCardList.removeChild(aiCardList.firstChild)
+  }
   redealButton.remove()
   compareHandWorth(userPlayer, aiPlayer)
 })

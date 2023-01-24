@@ -1,3 +1,27 @@
 body{
   background-color: beige;
+  display: grid;
+  grid-template-rows: 150px 200px 150px 20px;
+  grid-template-columns: 20px 1fr 20px;
+  text-align: center;
+}
+.aiBar{
+  grid-row: 1/2;
+  grid-column: 1/4;
+}
+.middleArea{
+  grid-column: 1/4;
+  grid-row: 2/3;
+  /* background-image: url('/images/Playing_Cards/card-back2.png'); */
+
+}
+.userBar{
+  grid-column: 1/4;
+
+  height: 20px;
+  grid-row: 3/4;
+}
+.buttons{
+  grid-column: 1/4;
+  grid-row: 4/5;
 }

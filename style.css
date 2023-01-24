@@ -19,13 +19,14 @@ body{
 .navBar:hover{
   opacity: 1;
   height: 100px;
-  transition: all 0.2s;
+  transition: all 0.5s;
 }
 #navItem{
   opacity: 1;
- color: white;
+ color: #FF3131;
  float: left;
  font-size: 30px;
+ font-family: "Neonderthaw";
 }
 .navImg{
   width: 30px;
@@ -46,7 +47,22 @@ body{
   justify-content: center;
   grid-column: 1/4;
   grid-row: 3/4;
- 
+}
+.middleCard{
+  position: absolute;
+}
+.deal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 144px;
+  z-index: 1;
+  color: white;
+  font-size: 40px;
+  background-image: url("/images/Playing_Cards/card-back2.png");
+  background-size: contain;
+  text-shadow: 0px 0px 20px black;
 }
 .userBar{
   display: flex;
@@ -59,11 +75,14 @@ body{
 
 }
 .selectableCard:hover{
-  border: 2px solid red;
+  border: 3px solid red;
+  transition: all 0.1s;
+
 }
 .selected{
   border: 2px solid red;
-
+  width: 102px;
+  height: 150px;
 }
 .buttons{
   grid-column: 1/4;

@@ -403,7 +403,7 @@ const resetGame = () => {
     aiCardList.removeChild(aiCardList.firstChild)
   }
   dealButton.classList.toggle('invisible')
-  cardList.append(redealButton)
+  redealButton.classList.toggle('invisible')
 }
 
 //DOM Manipulation

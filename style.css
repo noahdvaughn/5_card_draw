@@ -60,6 +60,8 @@ body{
   background-image: url("/images/Playing_Cards/card-back2.png");
   background-size: contain;
   text-shadow: 0px 0px 20px black;
+  background-repeat: no-repeat;
+
 }
 .redeal{
   display: flex;
@@ -73,6 +75,12 @@ body{
   background-image: url("/images/Playing_Cards/card-back2.png");
   background-size: contain;
   text-shadow: 0px 0px 20px black;
+  background-repeat: no-repeat;
+}
+.deal:hover, .redeal:hover{
+  width: 102px;
+  height: 150px;
+  transition: all 0.5s;
 }
 .displayMessage{
   display:flex;
@@ -108,8 +116,13 @@ body{
   grid-column: 1/4;
   grid-row: 6/7;
 }
+#loseImg{
+  width: 160px;
+}
 .invisible{display: none;}
-
-resultImg{
-  width: 10px;
+.reset{
+  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.lE7H_v2WW938oY_96s7iUwHaE8%26pid%3DApi&f=1&ipt=5720981c3f9009d8e71f02bb540953550d31a73593baabf63484ec09a0966886&ipo=images');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }

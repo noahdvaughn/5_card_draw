@@ -40,6 +40,8 @@ let dealButton = document.querySelector('.deal')
 let redealButton = document.querySelector('.redeal')
 let resetButton = document.querySelector('.reset')
 let middleArea = document.querySelector('.middleArea')
+let winImg = document.querySelector('#winImg')
+let loseImg = document.querySelector('#loseImg')
 
 const s2 = new card('spades', 2, 'card-spades-2.png')
 const s3 = new card('spades', 3, 'card-spades-3.png')
@@ -404,13 +406,12 @@ const reDealCards = (...arguments) => {
 const compareHandWorth = (userPlayer, aiPlayer) => {
   checkHand(userPlayer)
   checkHand(aiPlayer)
-  let resultImg = document.createElement('img')
   if (userPlayer.handWorth > aiPlayer.handWorth) {
     displayMessage.innerText = 'You win! '
-    resultImg.src = 'images/Playing_Cards/joker.png'
-    middleArea.append(resultImg)
+    winImg.classList.toggle('invisible')
   } else if (aiPlayer.handWorth > userPlayer.handWorth) {
     displayMessage.innerText = 'You lose! '
+    loseImg.classList.toggle('invisible')
   } else if (aiPlayer.handWorth === userPlayer.handWorth) {
     displayMessage.innerText = 'It`s a draw! '
   }
@@ -448,6 +449,8 @@ const resetGame = () => {
   displayMessage.innerText = 'Click the deal button to begin'
   dealButton.classList.toggle('invisible')
   resetButton.classList.toggle('invisible')
+  loseImg.classList = 'invisible'
+  winImg.classList = 'invisible'
 }
 
 //DOM Manipulation

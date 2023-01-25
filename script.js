@@ -5,6 +5,7 @@ class pokerPlayer {
     this.currentHandSuits = []
     this.handWorth = 0
     this.handTitle = ''
+    this.pairCards = 0
   }
   resetPlayer() {
     this.currentHand = []
@@ -12,6 +13,7 @@ class pokerPlayer {
     this.currentHandSuits = []
     this.handWorth = 0
     this.handTitle = ''
+    this.pairCards = 0
   }
 }
 class card {
@@ -164,7 +166,6 @@ const checkStraight = (pokerPlayer) => {
   let case8 = [8, 9, 10, 11, 12]
   let case9 = [9, 10, 11, 12, 13]
   let case10 = [10, 11, 12, 13, 14]
-  pokerPlayer.currentHandValues.sort((a, b) => a - b)
   if (pokerPlayer.currentHandValues.toString() === case1.toString()) {
     pokerPlayer.handTitle = '5 High Straight'
     return 5.01
@@ -201,49 +202,42 @@ const checkStraight = (pokerPlayer) => {
 }
 const checkPairs = (pokerPlayer) => {
   let pairNum = 0
-  pokerPlayer.currentHandValues.sort((a, b) => a - b)
   for (i = 0; i < 4; i++) {
     let nextNum = i + 1
-
     if (
       pokerPlayer.currentHandValues[i].toString() ===
       pokerPlayer.currentHandValues[nextNum].toString()
     ) {
+      pokerPlayer.pairCards = pokerPlayer.currentHandValues[i]
       pairNum++
     }
   }
-  if (
-    (pokerPlayer.currentHandValues[0].toString() ===
-      pokerPlayer.currentHandValues[1].toString() &&
-      pokerPlayer.currentHandValues[0].toString() ===
-        pokerPlayer.currentHandValues[2].toString()) ||
-    (pokerPlayer.currentHandValues[1].toString() ===
-      pokerPlayer.currentHandValues[2].toString() &&
-      pokerPlayer.currentHandValues[1].toString() ===
-        pokerPlayer.currentHandValues[3].toString()) ||
-    (pokerPlayer.currentHandValues[2].toString() ===
-      pokerPlayer.currentHandValues[3].toString() &&
-      pokerPlayer.currentHandValues[2].toString() ===
-        pokerPlayer.currentHandValues[4].toString())
-  ) {
-    pairNum++
+
+  for (i = 0; i < 3; i++) {
+    if (
+      pokerPlayer.currentHandValues[i].toString() ===
+        pokerPlayer.currentHandValues[i + 1].toString() &&
+      pokerPlayer.currentHandValues[i].toString() ===
+        pokerPlayer.currentHandValues[i + 2].toString()
+    ) {
+      pairNum++
+      pokerPlayer.pairCards = pokerPlayer.currentHandValues[i]
+    }
   }
-  if (
-    (pokerPlayer.currentHandValues[0].toString() ===
-      pokerPlayer.currentHandValues[1].toString() &&
-      pokerPlayer.currentHandValues[0].toString() ===
-        pokerPlayer.currentHandValues[2].toString() &&
-      pokerPlayer.currentHandValues[0].toString() ===
-        pokerPlayer.currentHandValues[3].toString()) ||
-    (pokerPlayer.currentHandValues[1].toString() ===
-      pokerPlayer.currentHandValues[2].toString() &&
-      pokerPlayer.currentHandValues[1].toString() ===
-        pokerPlayer.currentHandValues[3].toString() &&
-      pokerPlayer.currentHandValues[1].toString() ===
-        pokerPlayer.currentHandValues[4].toString())
-  ) {
-    pairNum++
+  for (i = 0; i < 2; i++) {
+    if (
+      pokerPlayer.currentHandValues[i].toString() ===
+        pokerPlayer.currentHandValues[i + 1].toString() &&
+      pokerPlayer.currentHandValues[i].toString() ===
+        pokerPlayer.currentHandValues[i + 2].toString() &&
+      pokerPlayer.currentHandValues[i].toString() ===
+        pokerPlayer.currentHandValues[i + 3].toString()
+    ) {
+      pokerPlayer.pairCards = pokerPlayer.currentHandValues[i]
+      pairNum++
+    }
   }
+  console.log(pairNum)
   return pairNum
 }
 
@@ -265,47 +259,45 @@ const checkFlush = (pokerPlayer) => {
     return 0
   }
 }
-const checkHighCard = (pokerPlayer) => {
-  pokerPlayer.currentHandValues.sort((a, b) => a - b)
-  let highCard = pokerPlayer.currentHandValues[4].toString()
-
+const checkHighCard = (pokerPlayer, card) => {
   //cases end at 6 because if you have 5 high you have a straight or a pair
-  switch (highCard) {
+
+  switch (card.toString()) {
     case '14':
-      pokerPlayer.handTitle = 'Ace high'
-      return 1.14
+      pokerPlayer.handWorth += 0.14
+      return 'Ace'
       break
     case '13':
-      pokerPlayer.handTitle = 'King high'
-      return 1.13
+      pokerPlayer.handWorth += 0.13
+      return 'King'
       break
     case '12':
-      pokerPlayer.handTitle = 'Queen high'
-      return 1.12
+      pokerPlayer.handWorth += 0.12
+      return 'Queen'
       break
     case '11':
-      pokerPlayer.handTitle = 'Jack high'
-      return 1.11
+      pokerPlayer.handWorth += 0.11
+      return 'Jack'
       break
     case '10':
-      pokerPlayer.handTitle = '10 high'
-      return 1.1
+      pokerPlayer.handWorth += 0.1
+      return '10'
       break
     case '9':
-      pokerPlayer.handTitle = '9 high'
-      return 1.09
+      pokerPlayer.handWorth += 0.09
+      return '9'
       break
     case '8':
-      pokerPlayer.handTitle = '8 high'
-      return 1.08
+      pokerPlayer.handWorth += 0.08
+      return '8'
       break
     case '7':
-      pokerPlayer.handTitle = '7 high'
-      return 1.07
+      pokerPlayer.handWorth += 0.07
+      return '7'
       break
     case '6':
-      pokerPlayer.handTitle = '6 high'
-      return 1.06
+      pokerPlayer.handWorth += 0.06
+      return '6'
       break
   }
 }
@@ -316,6 +308,7 @@ const checkHand = (pokerPlayer) => {
     pokerPlayer.currentHandValues.push(element.value)
     pokerPlayer.currentHandSuits.push(element.suit)
   })
+  pokerPlayer.currentHandValues.sort((a, b) => a - b)
 
   if (checkStraight(pokerPlayer) != 0 && checkFlush != 0) {
     pokerPlayer.handWorth = checkStraight(pokerPlayer) + checkFlush(pokerPlayer)
@@ -344,14 +337,22 @@ const checkHand = (pokerPlayer) => {
     pokerPlayer.handTitle = '2 pair'
     return
   } else if (checkPairs(pokerPlayer) === 1) {
-    pokerPlayer.handWorth = 2
-    pokerPlayer.handTitle = '1 pair'
+    pokerPlayer.handWorth += 2
+
+    pokerPlayer.handTitle = `a pair of ${checkHighCard(
+      pokerPlayer,
+      pokerPlayer.pairCards
+    )}'s`
     return
-  } else if (checkHighCard(pokerPlayer) != 0) {
-    pokerPlayer.handWorth = checkHighCard(pokerPlayer)
+  } else if (checkHighCard(pokerPlayer, pokerPlayer.currentHandValues[4])) {
+    pokerPlayer.handTitle = `${checkHighCard(
+      pokerPlayer,
+      pokerPlayer.currentHandValues[4]
+    )} High`
   } else {
-    alert('error')
+    alert('error in checking hand worth')
   }
+  console.log(pokerPlayer.handWorth)
 }
 const reDealCards = (...arguments) => {
   arguments.forEach((cardIndex) => {
@@ -406,13 +407,14 @@ const resetGame = () => {
 }
 
 //DOM Manipulation
-let displayMessage = document.querySelector('.displayMessage')
+
 let redealArray = []
 let c1Counter = 0
 let c2Counter = 0
 let c3Counter = 0
 let c4Counter = 0
 let c5Counter = 0
+let displayMessage = document.querySelector('.displayMessage')
 let cardList = document.querySelector('.userBar')
 let aiCardList = document.querySelector('.aiBar')
 let dealButton = document.querySelector('.deal')
@@ -447,7 +449,6 @@ const addCardListeners = () => {
   selectableCard[2].addEventListener('click', () => {
     if (c3Counter % 2 === 0) {
       redealArray.push(`2`)
-      console.log(redealArray)
       c3Counter++
     } else if (c3Counter % 2 != 0) {
       redealArray.pop()
@@ -458,7 +459,6 @@ const addCardListeners = () => {
   selectableCard[3].addEventListener('click', () => {
     if (c4Counter % 2 === 0) {
       redealArray.push(`3`)
-      console.log(redealArray)
       c4Counter++
     } else if (c4Counter % 2 != 0) {
       redealArray.pop()
@@ -470,7 +470,6 @@ const addCardListeners = () => {
   selectableCard[4].addEventListener('click', () => {
     if (c5Counter % 2 === 0) {
       redealArray.push(`4`)
-      console.log(redealArray)
       c5Counter++
     } else if (c5Counter % 2 != 0) {
       redealArray.pop()

@@ -403,10 +403,10 @@ const resetGame = () => {
     aiCardList.removeChild(aiCardList.firstChild)
   }
   dealButton.classList.toggle('invisible')
-  redealButton.classList.toggle('invisible')
 }
 
 //DOM Manipulation
+let displayMessage = document.querySelector('.displayMessage')
 let redealArray = []
 let c1Counter = 0
 let c2Counter = 0
@@ -486,8 +486,10 @@ dealButton.addEventListener('click', () => {
   updateCards()
   addCardListeners()
 
-  document.querySelector('.deal').classList.toggle('invisible')
+  dealButton.classList.toggle('invisible')
   redealButton.classList.toggle('invisible')
+  displayMessage.innerText =
+    'Select up to 4 cards to change out then click the Redeal button.'
 })
 
 redealButton.addEventListener('click', () => {

@@ -1,7 +1,7 @@
 body{
   background-image: url('https://www.publicdomainpictures.net/pictures/200000/velka/green-background-1480062887P1D.jpg');
   display: grid;
-  grid-template-rows: 100px 180px 200px 180px 10px;
+  grid-template-rows: 100px 180px 200px 10px 180px 10px;
   grid-template-columns: 20px 1fr 40px;
   text-align: center;
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@ body{
 }
 #navItem{
   opacity: 1;
- color: #FF3131;
+ color: white;
  float: left;
  font-size: 30px;
  font-family: "Neonderthaw";
@@ -60,7 +60,28 @@ body{
   background-image: url("/images/Playing_Cards/card-back2.png");
   background-size: contain;
   text-shadow: 0px 0px 20px black;
-  
+}
+.redeal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 144px;
+  z-index: 1;
+  color: white;
+  font-size: 30px;
+  background-image: url("/images/Playing_Cards/card-back2.png");
+  background-size: contain;
+  text-shadow: 0px 0px 20px black;
+}
+.displayMessage{
+  display:flex;
+  grid-column: 1/4;
+  grid-row: 4/5;
+  align-self: center;
+  justify-content: center;
+  color: white;
+  opacity: 0.5;
 }
 .userBar{
   display: flex;
@@ -68,7 +89,7 @@ body{
   align-items: center;
 
   grid-column: 1/4;
-  grid-row: 4/5;
+  grid-row: 5/6;
   gap: 10px;
 
 }
@@ -84,6 +105,6 @@ body{
 }
 .buttons{
   grid-column: 1/4;
-  grid-row: 5/6;
+  grid-row: 6/7;
 }
 .invisible{display: none;}

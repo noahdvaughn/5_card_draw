@@ -109,3 +109,7 @@ body{
   grid-row: 6/7;
 }
 .invisible{display: none;}
+
+resultImg{
+  width: 10px;
+}

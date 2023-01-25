@@ -27,6 +27,19 @@ const userPlayer = new pokerPlayer()
 const aiPlayer = new pokerPlayer()
 let deck = []
 let discardDeck = []
+let redealArray = []
+let c1Counter = 0
+let c2Counter = 0
+let c3Counter = 0
+let c4Counter = 0
+let c5Counter = 0
+let displayMessage = document.querySelector('.displayMessage')
+let cardList = document.querySelector('.userBar')
+let aiCardList = document.querySelector('.aiBar')
+let dealButton = document.querySelector('.deal')
+let redealButton = document.querySelector('.redeal')
+let resetButton = document.querySelector('.reset')
+let middleArea = document.querySelector('.middleArea')
 
 const s2 = new card('spades', 2, 'card-spades-2.png')
 const s3 = new card('spades', 3, 'card-spades-3.png')
@@ -237,7 +250,6 @@ const checkPairs = (pokerPlayer) => {
       pairNum++
     }
   }
-  console.log(pairNum)
   return pairNum
 }
 
@@ -248,20 +260,22 @@ const checkFlush = (pokerPlayer) => {
   let suitCase3 = ['hearts', 'hearts', 'hearts', 'hearts', 'hearts']
   let suitCase4 = ['spades', 'spades', 'spades', 'spades', 'spades']
   if (pokerPlayer.currentHandSuits.toString() === suitCase1.toString()) {
+    pokerPlayer.handTitle = 'Clubs Flush'
     return 6.001
   } else if (pokerPlayer.currentHandSuits.toString() === suitCase2.toString()) {
+    pokerPlayer.handTitle = 'Diamonds Flush'
     return 6.002
   } else if (pokerPlayer.currentHandSuits.toString() === suitCase3.toString()) {
+    pokerPlayer.handTitle = 'Hearts Flush'
     return 6.003
   } else if (pokerPlayer.currentHandSuits.toString() === suitCase4.toString()) {
+    pokerPlayer.handTitle = 'Spades Flush'
     return 6.004
   } else {
     return 0
   }
 }
 const checkHighCard = (pokerPlayer, card) => {
-  //cases end at 6 because if you have 5 high you have a straight or a pair
-
   switch (card.toString()) {
     case '14':
       pokerPlayer.handWorth += 0.14
@@ -299,6 +313,22 @@ const checkHighCard = (pokerPlayer, card) => {
       pokerPlayer.handWorth += 0.06
       return '6'
       break
+    case '5':
+      pokerPlayer.handWorth += 0.05
+      return '5'
+      break
+    case '4':
+      pokerPlayer.handWorth += 0.04
+      return '4'
+      break
+    case '3':
+      pokerPlayer.handWorth += 0.03
+      return '3'
+      break
+    case '2':
+      pokerPlayer.handWorth += 0.02
+      return '2'
+      break
   }
 }
 
@@ -315,12 +345,18 @@ const checkHand = (pokerPlayer) => {
     pokerPlayer.handTitle = 'Straight Flush'
     return
   } else if (checkPairs(pokerPlayer) === 5) {
-    pokerPlayer.handWorth = 8
-    pokerPlayer.handTitle = 'Four of a kind'
+    pokerPlayer.handWorth += 8
+    pokerPlayer.handTitle = `4 ${checkHighCard(
+      pokerPlayer,
+      pokerPlayer.pairCards
+    )}'s!!`
     return
   } else if (checkPairs(pokerPlayer) === 4) {
-    pokerPlayer.handWorth = 7
-    pokerPlayer.handTitle = 'Full House'
+    pokerPlayer.handWorth += 7
+    pokerPlayer.handTitle = `Full House with 3 ${checkHighCard(
+      pokerPlayer,
+      pokerPlayer.pairCards
+    )}'s`
     return
   } else if (checkFlush(pokerPlayer) != 0) {
     pokerPlayer.handWorth = checkFlush(pokerPlayer)
@@ -329,8 +365,11 @@ const checkHand = (pokerPlayer) => {
     pokerPlayer.handWorth = checkStraight(pokerPlayer)
     return
   } else if (checkPairs(pokerPlayer) === 3) {
-    pokerPlayer.handWorth = 4
-    pokerPlayer.handTitle = '3 of a kind'
+    pokerPlayer.handWorth += 4
+    pokerPlayer.handTitle = `3 ${checkHighCard(
+      pokerPlayer,
+      pokerPlayer.pairCards
+    )}'s`
     return
   } else if (checkPairs(pokerPlayer) === 2) {
     pokerPlayer.handWorth = 3
@@ -352,7 +391,6 @@ const checkHand = (pokerPlayer) => {
   } else {
     alert('error in checking hand worth')
   }
-  console.log(pokerPlayer.handWorth)
 }
 const reDealCards = (...arguments) => {
   arguments.forEach((cardIndex) => {
@@ -366,15 +404,19 @@ const reDealCards = (...arguments) => {
 const compareHandWorth = (userPlayer, aiPlayer) => {
   checkHand(userPlayer)
   checkHand(aiPlayer)
-
+  let resultImg = document.createElement('img')
   if (userPlayer.handWorth > aiPlayer.handWorth) {
-    alert('You win!')
+    displayMessage.innerText = 'You win! '
+    resultImg.src = 'images/Playing_Cards/joker.png'
+    middleArea.append(resultImg)
   } else if (aiPlayer.handWorth > userPlayer.handWorth) {
-    alert('You lose!')
+    displayMessage.innerText = 'You lose! '
   } else if (aiPlayer.handWorth === userPlayer.handWorth) {
-    alert('It`s a draw!')
+    displayMessage.innerText = 'It`s a draw! '
   }
-  alert(`You had ${userPlayer.handTitle} and they had ${aiPlayer.handTitle}`)
+
+  displayMessage.innerText += `You had ${userPlayer.handTitle} and they had ${aiPlayer.handTitle}`
+  document.querySelector('.reset').classList.toggle('invisible')
 }
 const updateCards = () => {
   userPlayer.currentHand.forEach((element) => {
@@ -403,27 +445,16 @@ const resetGame = () => {
   while (aiCardList.firstChild) {
     aiCardList.removeChild(aiCardList.firstChild)
   }
+  displayMessage.innerText = 'Click the deal button to begin'
   dealButton.classList.toggle('invisible')
+  resetButton.classList.toggle('invisible')
 }
 
 //DOM Manipulation
 
-let redealArray = []
-let c1Counter = 0
-let c2Counter = 0
-let c3Counter = 0
-let c4Counter = 0
-let c5Counter = 0
-let displayMessage = document.querySelector('.displayMessage')
-let cardList = document.querySelector('.userBar')
-let aiCardList = document.querySelector('.aiBar')
-let dealButton = document.querySelector('.deal')
-let redealButton = document.querySelector('.redeal')
-let resetButton = document.querySelector('.reset')
-
+//Buttons to remove each individual card
 const addCardListeners = () => {
   let selectableCard = document.querySelectorAll('.selectableCard')
-
   selectableCard[0].addEventListener('click', () => {
     if (c1Counter % 2 === 0) {
       redealArray.push(`0`)
@@ -434,7 +465,6 @@ const addCardListeners = () => {
     }
     selectableCard[0].classList.toggle('selected')
   })
-
   selectableCard[1].addEventListener('click', () => {
     if (c2Counter % 2 === 0) {
       redealArray.push(`1`)
@@ -445,7 +475,6 @@ const addCardListeners = () => {
     }
     selectableCard[1].classList.toggle('selected')
   })
-
   selectableCard[2].addEventListener('click', () => {
     if (c3Counter % 2 === 0) {
       redealArray.push(`2`)
@@ -466,7 +495,6 @@ const addCardListeners = () => {
     }
     selectableCard[3].classList.toggle('selected')
   })
-
   selectableCard[4].addEventListener('click', () => {
     if (c5Counter % 2 === 0) {
       redealArray.push(`4`)

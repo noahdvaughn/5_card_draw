@@ -241,3 +241,11 @@ h2{
 font-size: large;
 transition: all 0.3s;
 }
+@media (max-width: 1000px) {
+  .suitsBorder, .suitsBorder2, .suitsBorder3, .suitsBorder4{
+    display: none;
+  }
+  .userBar{
+    gap:0px
+  }
+}

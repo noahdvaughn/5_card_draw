@@ -39,8 +39,7 @@ Week 1 General Assembly project. A poker game of 5-card draw built on JavaScript
 ### **_Credits_**
 
 - [Free to use card assets from image creator, cazwolf](https://cazwolf.itch.io/pixel-fantasy-cards)
-- [Snoopy gif Posted by darlingl on tenor.com]
-  (https://tenor.com/view/snoopy-poker-gif-19739906)
+- [Snoopy gif Posted by darlingl on tenor.com](https://tenor.com/view/snoopy-poker-gif-19739906)
 - [Zach Galifianakis Thinking GIF on tenor.com](https://tenor.com/view/the-hangover-zach-galifianakis-math-card-counting-gambling-gif-3938292)
 - [Card Falling gif by Animated Stickers on gfycat.com](https://gfycat.com/elegantbothbobolink-deck-of-cards-card-game-gambling-gaming-cards)
 - [Vegas-Style Clipart and Border Suits on WebStockReview.com](https://webstockreview.net/pict/getfirst)

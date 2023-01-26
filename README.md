@@ -7,6 +7,7 @@
 [Trello](https://trello.com/b/sHGT3jGt/5-card-draw)
 [LinkedIn](https://www.linkedin.com/in/noahvaughn/)
 [Github](https://github.com/noahdvaughn)
+[Deployed project on Surge](https://noahs-five-card-draw.surge.sh/index.html)
 
 ---
 
@@ -22,14 +23,15 @@ Week 1 General Assembly project. A poker game of 5-card draw built on JavaScript
 - VS Code
 - Trello
 - Github
+- DuckDuckGo Image Search
+- Surge
 
 ---
 
 ### **_Screenshots_**
 
-![Screenshot 1](/images/Playing_Cards/homepage.png)
-![Screenshot 2](/images/Playing_Cards/rulespage.png)
-![Screenshot 3](/images/Playing_Cards/gamepage2.png)
+![Screenshot 1](https://i.imgur.com/jqQQf3V.png)
+![Screenshot 2](https://i.imgur.com/FUKAIdv.png)
 
 ### **_Future Updates_**
 

@@ -66,6 +66,11 @@ font-size: 30px;
   font-family: "Neonderthaw";
   margin-right: -30px;
 }
+.rulesBody{
+  grid-column: 1/4;
+  grid-row: 3/4;
+
+}
 
 .navBar{
   display: flex;

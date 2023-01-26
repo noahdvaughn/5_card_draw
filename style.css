@@ -1,7 +1,7 @@
 body{
   background-image: url('https://www.publicdomainpictures.net/pictures/200000/velka/green-background-1480062887P1D.jpg');
   display: grid;
-  grid-template-rows: 100px 180px 200px 10px 180px 10px;
+  grid-template-rows: 100px 180px 200px 10px 180px 142px;
   grid-template-columns: 20px 1fr 40px;
   text-align: center;
   background-repeat: no-repeat;
@@ -15,6 +15,7 @@ body{
   opacity: 0.2;
   height: 75px;
   align-items: center;
+
 }
 .navBar:hover{
   opacity: 1;
@@ -24,9 +25,15 @@ body{
 #navItem{
   opacity: 1;
  color: white;
- float: left;
+ justify-content: flex-start;
  font-size: 30px;
  font-family: "Neonderthaw";
+}
+.aiWinCounter, .userWinCounter{
+  margin: 0 10px;
+}
+.userWins{
+  margin-left: auto;
 }
 .navImg{
   width: 30px;
@@ -120,9 +127,19 @@ body{
   width: 160px;
 }
 .invisible{display: none;}
+.flex{display: flex;}
+
 .reset{
-  background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.lE7H_v2WW938oY_96s7iUwHaE8%26pid%3DApi&f=1&ipt=5720981c3f9009d8e71f02bb540953550d31a73593baabf63484ec09a0966886&ipo=images');
+  background-image: url('images/Playing_Cards/resetChip.png');
   background-position: center;
-  background-size: contain;
   background-repeat: no-repeat;
+  align-items: center;
+  justify-content: center;
+  height: 144px;
+  color: white;
+  text-shadow: 1px 0px 4px black;
+}
+.reset:hover{
+font-size: large;
+transition: all 0.3s;
 }

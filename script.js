@@ -42,6 +42,8 @@ let resetButton = document.querySelector('.reset')
 let middleArea = document.querySelector('.middleArea')
 let winImg = document.querySelector('#winImg')
 let loseImg = document.querySelector('#loseImg')
+let aiWinCounter = 0
+let userWinCounter = 0
 
 const s2 = new card('spades', 2, 'card-spades-2.png')
 const s3 = new card('spades', 3, 'card-spades-3.png')
@@ -409,15 +411,20 @@ const compareHandWorth = (userPlayer, aiPlayer) => {
   if (userPlayer.handWorth > aiPlayer.handWorth) {
     displayMessage.innerText = 'You win! '
     winImg.classList.toggle('invisible')
+    userWinCounter++
+    document.querySelector('.userWinCounter').innerText = userWinCounter
   } else if (aiPlayer.handWorth > userPlayer.handWorth) {
     displayMessage.innerText = 'You lose! '
     loseImg.classList.toggle('invisible')
+    aiWinCounter++
+    document.querySelector('.aiWinCounter').innerText = aiWinCounter
   } else if (aiPlayer.handWorth === userPlayer.handWorth) {
     displayMessage.innerText = 'It`s a draw! '
   }
 
   displayMessage.innerText += `You had ${userPlayer.handTitle} and they had ${aiPlayer.handTitle}`
   document.querySelector('.reset').classList.toggle('invisible')
+  document.querySelector('.reset').classList.toggle('flex')
 }
 const updateCards = () => {
   userPlayer.currentHand.forEach((element) => {
@@ -448,6 +455,7 @@ const resetGame = () => {
   }
   displayMessage.innerText = 'Click the deal button to begin'
   dealButton.classList.toggle('invisible')
+  resetButton.classList.toggle('flex')
   resetButton.classList.toggle('invisible')
   loseImg.classList = 'invisible'
   winImg.classList = 'invisible'
@@ -519,7 +527,7 @@ dealButton.addEventListener('click', () => {
   dealButton.classList.toggle('invisible')
   redealButton.classList.toggle('invisible')
   displayMessage.innerText =
-    'Select up to 4 cards to change out then click the Redeal button.'
+    'Select cards to change out then click the Redeal button.'
 })
 
 redealButton.addEventListener('click', () => {

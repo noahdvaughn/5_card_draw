@@ -27,7 +27,7 @@ Week 1 General Assembly project. A poker game of 5-card draw built on JavaScript
 
 ### **_Screenshots_**
 
-[Screenshot 1](/images/Playing_Cards/homepage.png)
+![Screenshot 1](/images/Playing_Cards/homepage.png)
 
 ### **_Future Updates_**
 

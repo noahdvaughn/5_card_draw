@@ -2,10 +2,71 @@ body{
   background-image: url('https://www.publicdomainpictures.net/pictures/200000/velka/green-background-1480062887P1D.jpg');
   display: grid;
   grid-template-rows: 100px 180px 200px 10px 180px 142px;
-  grid-template-columns: 20px 1fr 40px;
+  grid-template-columns: 110px 1fr 110px;
   text-align: center;
   background-repeat: no-repeat;
 }
+.suitsBorder{
+  grid-column: 1/2;
+  background-image: url('images/Playing_Cards/suitsborder.png');
+  grid-row: 1/7;
+  background-repeat: repeat;
+  padding: 0;
+  margin: 0;
+}
+.suitsBorder2{
+  background-image: url('images/Playing_Cards/suitsborder.png');
+  grid-row: 1/7;
+  grid-column: 3/4;
+  background-repeat: repeat;
+  padding: 0;
+  margin: 0;
+}
+.welcomeText{
+  display: flex;
+  background-image: url('images/Playing_Cards/sign.png');
+  justify-self: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  background-size: 100%;
+  grid-column: 1/4;
+  grid-row: 2/3;
+  width: 430px;
+  height: 358px;
+  background-repeat: no-repeat;
+  color: rgba(58, 140, 223, 0.927);
+ font-size: 20px;
+ font-family: optima, sans-serif;
+ padding-top: 30px;
+ /* margin-left: 70px; */
+}
+.fabulous{
+font-family: cursive;
+font-size: 30px;
+}
+.fiveCard{
+  display:flex;
+  justify-self: center;
+  padding-top: 50px;
+  font-size: 40px;
+  grid-column: 1/4;
+  grid-row: 3/4;
+  color: rgba(247, 40, 40, 0.768);
+ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.navButtons{
+  grid-column: 1/4;
+  grid-row: 5/6;
+}
+.homeGameButton{
+  padding: 40px;
+  color: white;
+  font-size: 40px;
+  font-family: "Neonderthaw";
+  margin-right: -30px;
+}
+
 .navBar{
   display: flex;
   grid-row: 1/2;

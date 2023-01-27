@@ -1,16 +1,24 @@
 body{
-  background-image: url('https://www.publicdomainpictures.net/pictures/200000/velka/green-background-1480062887P1D.jpg');
+  background: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.wallpapersafari.com%2F22%2F23%2FEfD0C5.jpg&f=1&nofb=1&ipt=b199cbcd01f1eb4a4a033c3f35bff707e30b6310f6144894727b291e6eedf859&ipo=images') no-repeat center center fixed;
   display: grid;
   grid-template-rows: 100px 180px 200px 10px 180px 142px 1fr;
   grid-template-columns: 110px 1fr 110px;
   text-align: center;
-  background-repeat: no-repeat;
+  background-size: cover;
+}
+.socialLinks{
+  width: 50px;
+  position:fixed;
+  bottom: 0;
+  align-self: center;
+}
+.githubLink, .linkedinLink{
+  width: 50px;
 }
 .suitsBorder{
   grid-column: 1/2;
   background-image: url('images/Playing_Cards/suitsborder.png');
   height: 100vh;
-
   background-repeat: repeat;
   padding: 0;
   margin: 0;
@@ -154,6 +162,7 @@ h2{
   grid-row: 3/4;
 }
 .deal{
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,12 +237,13 @@ h2{
 .flex{display: flex;}
 
 .reset{
+  margin-top: -25px;
   background-image: url('images/Playing_Cards/resetChip.png');
   background-position: center;
   background-repeat: no-repeat;
   align-items: center;
   justify-content: center;
-  height: 144px;
+  height: 140px;
   color: white;
   text-shadow: 1px 0px 4px black;
 }

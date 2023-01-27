@@ -5,8 +5,11 @@
 ## By: Noah Vaughn
 
 [Trello](https://trello.com/b/sHGT3jGt/5-card-draw)
+|
 [LinkedIn](https://www.linkedin.com/in/noahvaughn/)
+|
 [Github](https://github.com/noahdvaughn)
+|
 [Deployed project on Surge](https://noahs-five-card-draw.surge.sh/index.html)
 
 ---

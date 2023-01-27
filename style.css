@@ -7,10 +7,13 @@ body{
   background-size: cover;
 }
 .socialLinks{
-  width: 50px;
   position:fixed;
   bottom: 0;
-  align-self: center;
+  left: 10%;
+  opacity: 0.7;
+}
+.socialLinks:hover{
+  opacity: 1;
 }
 .githubLink, .linkedinLink{
   width: 50px;
@@ -54,7 +57,6 @@ body{
   background-image: url('images/Playing_Cards/sign.png');
   justify-self: center;
   justify-content: center;
-  justify-items: center;
   align-items: center;
   background-size: 100%;
   grid-column: 1/4;
@@ -66,7 +68,6 @@ body{
  font-size: 20px;
  font-family: optima, sans-serif;
  padding-top: 30px;
- /* margin-left: 70px; */
 }
 .fabulous{
 font-family: cursive;
@@ -92,6 +93,10 @@ font-size: 30px;
   font-size: 40px;
   font-family: "Neonderthaw";
   margin-right: -30px;
+}
+.homeGameButton:hover{
+  color: red;
+  transition: all 1.5s;
 }
 .snoopy{
   display: flex;
@@ -170,7 +175,7 @@ h2{
   height: 144px;
   z-index: 1;
   color: white;
-  font-size: 40px;
+  font-size: 30px;
   background-image: url("/images/Playing_Cards/card-back2.png");
   background-size: contain;
   text-shadow: 0px 0px 20px black;
@@ -183,18 +188,19 @@ h2{
   justify-content: center;
   width: 96px;
   height: 144px;
-  z-index: 1;
   color: white;
   font-size: 30px;
   background-image: url("/images/Playing_Cards/card-back2.png");
   background-size: contain;
   text-shadow: 0px 0px 20px black;
   background-repeat: no-repeat;
+  padding: 0;
 }
 .deal:hover, .redeal:hover{
-  width: 102px;
-  height: 150px;
-  transition: all 0.5s;
+  position: relative;
+  font-size: 34px;
+  padding: 10px;
+  transition: all 0.7s;
 }
 .displayMessage{
   display:flex;

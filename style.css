@@ -83,6 +83,12 @@ font-size: 30px;
   color: rgba(247, 40, 40, 0.768);
  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+.aiWinCounter{
+  color: rgba(247, 40, 40, 0.768);
+}
+.userWinCounter{
+  color:rgba(58, 140, 223, 0.927);
+}
 .navButtons{
   grid-column: 1/4;
   grid-row: 5/6;
@@ -93,10 +99,12 @@ font-size: 30px;
   font-size: 40px;
   font-family: "Neonderthaw";
   margin-right: -30px;
+  transition: all 1s;
+
 }
 .homeGameButton:hover{
   color: red;
-  transition: all 1.5s;
+  transition: all 1s;
 }
 .snoopy{
   display: flex;
@@ -126,12 +134,14 @@ h2{
   opacity: 0.2;
   height: 75px;
   align-items: center;
+  transition: all .5s ease;
+
 
 }
 .navBar:hover{
   opacity: 1;
   height: 100px;
-  transition: all 0.5s;
+  transition: all .5s ease;
 }
 #navItem{
   opacity: 1;
@@ -180,6 +190,8 @@ h2{
   background-size: contain;
   text-shadow: 0px 0px 20px black;
   background-repeat: no-repeat;
+  transition: all 0.7s ease;
+
 
 }
 .redeal{
@@ -195,12 +207,14 @@ h2{
   text-shadow: 0px 0px 20px black;
   background-repeat: no-repeat;
   padding: 0;
+  transition: all 0.7s ease;
+
 }
 .deal:hover, .redeal:hover{
   position: relative;
   font-size: 34px;
   padding: 10px;
-  transition: all 0.7s;
+  transition: all 0.7s ease;
 }
 .displayMessage{
   display:flex;
@@ -252,6 +266,8 @@ h2{
   height: 140px;
   color: white;
   text-shadow: 1px 0px 4px black;
+transition: all 0.3s;
+
 }
 .reset:hover{
 font-size: large;

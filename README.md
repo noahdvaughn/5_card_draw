@@ -35,7 +35,12 @@ Week 1 General Assembly Software Immersive project. A poker game of 5-card draw 
 
 ### **_Screenshots_**
 
+## Home Page
+
 ![Screenshot 1](https://imgur.com/FnyQtHY.png)
+
+## Game Page
+
 ![Screenshot 2](https://imgur.com/gGEgDOi.png)
 
 ### **_Future Updates_**
@@ -53,3 +58,5 @@ Week 1 General Assembly Software Immersive project. A poker game of 5-card draw 
 - [Black Poker Chip on by CellarDoor85 on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Casino_Chip.svg)
 - [Falling Chips on pngimg.com](https://pngimg.com/image/48259)
 - [Joker Card on geeksvgs.com](https://www.geeksvgs.com/id/241975) -[Red chip stack on pngimg.com](https://pngimg.com/image/48201)
+- [Red Github icon on icones.pro](https://icones.pro/en/github-icon-logo-symbol-png-red/)
+- [Red Linkedin icon on icones.pro](https://icones.pro/en/linkedin-red-round-icon/)

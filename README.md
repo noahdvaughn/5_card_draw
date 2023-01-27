@@ -13,13 +13,15 @@
 
 ### **_Description_**
 
-Week 1 General Assembly project. A poker game of 5-card draw built on JavaScript/CSS/HTML. This game allows one turn where the player can select an amount of cards to return. The game then tests the player's hand value versus the ai's hand value to determine a winner.
+Week 1 General Assembly Software Immersive project. A poker game of 5-card draw built on JavaScript/CSS/HTML. This game allows one turn where the player can select an amount of cards to return. The game then tests the player's hand value versus the ai's hand value to determine a winner.
 
 ---
 
 ### **_Technologies Used_**
 
-- MacBook Air
+- JavaScript
+- CSS
+- HTML
 - VS Code
 - Trello
 - Github
@@ -30,8 +32,8 @@ Week 1 General Assembly project. A poker game of 5-card draw built on JavaScript
 
 ### **_Screenshots_**
 
-![Screenshot 1](https://i.imgur.com/jqQQf3V.png)
-![Screenshot 2](https://i.imgur.com/FUKAIdv.png)
+![Screenshot 1](https://imgur.com/FnyQtHY.png)
+![Screenshot 2](https://imgur.com/gGEgDOi.png)
 
 ### **_Future Updates_**
 

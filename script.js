@@ -344,7 +344,7 @@ const checkHand = (pokerPlayer) => {
   })
   pokerPlayer.currentHandValues.sort((a, b) => a - b)
 
-  if (checkStraight(pokerPlayer) != 0 && checkFlush != 0) {
+  if (checkStraight(pokerPlayer) != 0 && checkFlush(pokerPlayer) != 0) {
     pokerPlayer.handWorth = checkStraight(pokerPlayer) + checkFlush(pokerPlayer)
     pokerPlayer.handTitle = 'Straight Flush'
     return

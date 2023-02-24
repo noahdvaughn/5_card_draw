@@ -211,9 +211,7 @@ h2{
 
 }
 .deal:hover, .redeal:hover{
-  position: relative;
-  font-size: 34px;
-  padding: 10px;
+  transform: scale(1.1);
   transition: all 0.7s ease;
 }
 .displayMessage{

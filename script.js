@@ -337,13 +337,11 @@ const checkHighCard = (pokerPlayer, card) => {
 }
 
 const checkHand = (pokerPlayer) => {
-  //add values and suits
   pokerPlayer.currentHand.forEach((element) => {
     pokerPlayer.currentHandValues.push(element.value)
     pokerPlayer.currentHandSuits.push(element.suit)
   })
   pokerPlayer.currentHandValues.sort((a, b) => a - b)
-
   if (checkStraight(pokerPlayer) != 0 && checkFlush(pokerPlayer) != 0) {
     pokerPlayer.handWorth = checkStraight(pokerPlayer) + checkFlush(pokerPlayer)
     pokerPlayer.handTitle = 'Straight Flush'

@@ -12,43 +12,46 @@
   <title>5-Card Draw</title>
 </head>
 <body style="overflow: hidden;">
-<div class="navBar">
+
+<div class="navBar mobileHide">
   <a id="navItem" href="index.html">Home</a>
   <img class="navImg" src="https://pngimg.com/uploads/poker/poker_PNG2.png" alt="">
   <a id="navItem" href="rules.html">Rules</a>
   <img class="navImg" src="https://pngimg.com/uploads/poker/poker_PNG2.png" alt="">
   <a id="navItem" href="gamePage.html">Play</a>
   <img class="navImg" src="https://pngimg.com/uploads/poker/poker_PNG2.png" alt="">
-
   <p id="navItem"
   class="userWins">User wins: <span class="userWinCounter">0</span></p>
   <p id="navItem">AI wins: <span class="aiWinCounter">0</span></p>
-
-
-
 </div>
 
-<div class="aiBar"></div>
-
-<div class="middleArea">
-  <p class="deal">Deal</p>
-  <p class="redeal invisible">Redeal</p>
-  <img class="invisible" id="loseImg"  src="images/Playing_Cards/joker.png" alt="">
-  <img class="invisible" id="winImg" src="images/Playing_Cards/winImg.png" alt="">
+<div class="mobileNav mobileShow">
+  <a id="navItem" href="index.html">Home</a>
 </div>
 
-<p class="displayMessage">Click the Deal button to begin</p>
+<div class="mobileBody">
 
-<div class="userBar"></div>
-
-<div class="buttons">
-  <p class="reset invisible">Play again?</p>
+    <div class="aiBar"></div>
+  
+    <div class="middleArea">
+      <p class="deal">Deal</p>
+      <p class="redeal invisible">Redeal</p>
+      <img class="invisible" id="loseImg"  src="images/Playing_Cards/joker.png" alt="">
+      <img class="invisible" id="winImg" src="images/Playing_Cards/winImg.png" alt="">
+      <p class="displayMessage">Click the Deal button to begin</p>
+      <div class="buttons">
+        <p class="reset invisible">Play again?</p>
+      </div>
+    </div>
+    
+    <div class="userBar"></div>
 </div>
+
 <div class="socialLinks">
   <a href="https://github.com/noahdvaughn" alt=""><img class="githubLink" src="https://icones.pro/wp-content/uploads/2021/06/icone-github-rouge.png" ></a>
   <a  href="https://www.linkedin.com/in/noahvaughn/" alt=""><img class="linkedinLink" src="https://icones.pro/wp-content/uploads/2021/03/icone-linkedin-ronde-rouge.png" ></a>
 </div>
-<div class="suitsBorder3"></div>
-<div class="suitsBorder4"></div>
+<div class="suitsBorder3 mobileHide"></div>
+<div class="suitsBorder4 mobileHide"></div>
 </body>
 </html>

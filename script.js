@@ -432,6 +432,8 @@ const updateCards = () => {
     displayCardImage.classList.toggle('selectableCard')
     let aiDisplayCardImage = document.createElement('img')
     aiDisplayCardImage.src = 'images/Playing_Cards/card-back2.png'
+    aiDisplayCardImage.classList = 'displayCardImage'
+
     aiCardList.append(aiDisplayCardImage)
   })
 }
@@ -517,6 +519,7 @@ const addCardListeners = () => {
 }
 
 dealButton.addEventListener('click', () => {
+  console.log('hit')
   dealCards(userPlayer)
   dealCards(aiPlayer)
   updateCards()
@@ -541,6 +544,7 @@ redealButton.addEventListener('click', () => {
   aiPlayer.currentHand.forEach((element) => {
     let displayCardImage = document.createElement('img')
     displayCardImage.src = 'images/Playing_Cards/' + element.imagePath
+    displayCardImage.classList = 'displayCardImage'
     aiCardList.append(displayCardImage)
   })
   redealButton.classList.toggle('invisible')

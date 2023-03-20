@@ -9,6 +9,9 @@ body{
   justify-items: center;
   margin: 0;
 }
+.myLogo{
+  /* height: 1px; */
+}
 .mobileHide{
   display: flex;
 }
@@ -370,24 +373,52 @@ transition: all 0.3s;
 
 
 @media screen and (max-height: 480px) and (orientation: landscape){
+  .mobileNav{
+  height: 15vh;
+  margin-bottom: 10px;
+  }
+
   .middleArea{
     display: flex;
+    flex-direction: row;
+    left: 0;
+    align-content: center;
+    height: 100px;
+  }
+  .mobileBody{
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: 100px;
+   }
+  .deal{
+  /* height: 15vw; */
+  left: 6px;
+  position: absolute;
+  }
+  .redeal{
+    left: 0;
     position: absolute;
   }
-  .deal{
-    background-image: none;
+  .displayMessage{
+    /* right: 0; */
+    margin-left: 100px;
+    /* position: absolute; */
   }
   .buttons{
-    width: 200px;
+    left: 0;
+    top: 25%;
+    position: absolute;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
   }
+  .reset{
+    width: 130px;
+    background-size: contain;
+  }
+  
   #loseImg, #winImg{
     display: none;
-  }
-  body{
-   background-image: none;
   }
  .mobileShow{
   display: flex;
@@ -396,47 +427,28 @@ transition: all 0.3s;
   display: none;
  }
  .aiBar{
-  margin-top: 25vh;
-  display: flex;
-  flex-direction: column;
-  align-self: flex-start;
-  position: fixed;
-  left: 0;
+  height: 25vh;
 
+  display: flex;
+  margin: 0;
+  padding: 0;
  }
  .userBar{
-  margin-top: 25vh;
-  align-self: flex-start;
+  height: 25vh;
 
+  margin: 0;
+  padding: 0;
 
   display: flex;
-  flex-direction: column;
-  right: 0;
-  position: fixed;
+ }
 
- }
- .horizontalBody{
-  display: flex;
-  flex-wrap: nowrap;
- 
- }
- .mobileBody{
-  
-  margin-top: 10vh;
-  display: flex;
-  align-content: space-evenly;
-  justify-content: center;
-  justify-items: center;
-  justify-self: center;
- }
  .selectableCard{
-  height: 15vh;
- }
- .selectableCard:hover{
-  
+  height: 30vh;
  }
  .displayCardImage{
-  height: 15vh;
+  height: 30vh;
+
+
   margin: 0;
   padding: 0;
  }
@@ -445,6 +457,6 @@ transition: all 0.3s;
   display: flex;
   justify-content: center;
   bottom: 0;
-  left: 35%;
+  left: 0;
  }
 }

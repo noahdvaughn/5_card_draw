@@ -287,7 +287,9 @@ transition: all 0.3s;
 font-size: large;
 transition: all 0.3s;
 }
-
+.buttons{
+  width: 200px;
+}
 
 
 
